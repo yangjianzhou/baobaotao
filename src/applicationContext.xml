@@ -13,16 +13,16 @@
        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     
     <!-- 扫描类包，将标注Spring注解的类自动转化Bean，同时完成Bean的注入 -->
-    <context:component-scan base-package="com.baobaotao.dao"/>
-    <context:component-scan base-package="com.baobaotao.service"/>
+    <context:component-scan base-package="com.yangjianzhou.baobaotao.dao"/>
+    <context:component-scan base-package="com.yangjianzhou.baobaotao.service"/>
     
     <!-- 配置数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" 
-		p:driverClassName="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://localhost:3306/spring_mvc" 
-		p:username="root"
-		p:password="admin" />
+		p:driverClassName="org.postgresql.Driver"
+		p:url="jdbc:postgresql://localhost:5432/baobaotao"
+		p:username="dbuser"
+		p:password="123456" />
 
 	<!-- 配置Jdbc模板  -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
@@ -36,7 +36,7 @@
 	<!-- 通过AOP配置提供事务增强，让service包下所有Bean的所有方法拥有事务 -->
 	<aop:config proxy-target-class="true">
 		<aop:pointcut id="serviceMethod"
-			expression=" execution(* com.baobaotao.service..*(..))" />
+			expression=" execution(* com.yangjianzhou.baobaotao.service..*(..))" />
 		<aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice" />
 	</aop:config>
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

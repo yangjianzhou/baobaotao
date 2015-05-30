@@ -1,0 +1,30 @@
+apply  plugin : "java"
+apply  plugin : "idea"
+
+idea{
+    module{
+        downloadSources = true
+        downloadJavadoc = true
+    }
+
+}
+
+repositories{
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies{
+    compile 'org.springframework:spring-context:4.1.6.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.1.6.RELEASE'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'javax.servlet:jstl:1.2'
+    compile 'org.springframework:spring-test:4.1.6.RELEASE'
+    compile  'junit:junit:4.12'
+    compile  'org.postgresql:postgresql:9.3-1103-jdbc3'
+    //compile  'org.apache.commons:commons-dbcp2:2.1'
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    compile  'org.aspectj:aspectjweaver:1.8.5'
+
+}
