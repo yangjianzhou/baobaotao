@@ -1,6 +1,6 @@
 package com.yangjianzhou.baobaotao.dao;
 
-import com.yangjianzhou.baobaotao.entity.User;
+import com.yangjianzhou.baobaotao.bean.UserBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
@@ -20,9 +20,9 @@ public class UserDao {
 		return jdbcTemplate.queryForInt(sqlStr, new Object[] { userName, password });
 	}
 
-	public User findUserByUserName(final String userName) {
+	public UserBean findUserByUserName(final String userName) {
 		String sqlStr = " SELECT user_id,user_name,credits " + " FROM tbl_user WHERE user_name =? ";
-		final User user = new User();
+		final UserBean user = new UserBean();
 		jdbcTemplate.query(sqlStr, new Object[] { userName }, new RowCallbackHandler() {
 			public void processRow(ResultSet rs) throws SQLException {
 				user.setUserId(rs.getString("user_id"));
@@ -33,7 +33,7 @@ public class UserDao {
 		return user;
 	}
 
-	public void updateLoginInfo(User user) {
+	public void updateLoginInfo(UserBean user) {
 		String sqlStr = " UPDATE tbl_user SET last_visit=?,last_ip=?,credits=? " + " WHERE user_id =?";
 		jdbcTemplate.update(sqlStr, new Object[] { user.getLastVisit(), user.getLastIp(), user.getCredits(), user.getUserId() });
 	}
