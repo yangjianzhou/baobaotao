@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.yangjianzhou.baobaotao.bean.UserBean;
+import com.yangjianzhou.baobaotao.entity.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/applicationContext.xml" })
@@ -29,13 +29,13 @@ public class TestUserService {
 
 	@Test
 	public void testFindUserByUserName() {
-		UserBean user = userService.findUserByUserName("yangjianzhou");
+		User user = userService.findUserByUserName("yangjianzhou");
 		assertEquals(user.getUserName(), "admin");
 	}
 
 	@Test
 	public void testAddLoginLog() {
-		UserBean user = userService.findUserByUserName("yangjianzhou");
+		User user = userService.findUserByUserName("yangjianzhou");
 		user.setUserId("sadasdqwee");
 		user.setUserName("admin");
 		user.setLastIp("192.168.12.7");

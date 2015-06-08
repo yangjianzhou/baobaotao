@@ -1,14 +1,12 @@
 package com.yangjianzhou.baobaotao.service;
 
-import com.yangjianzhou.baobaotao.bean.LoginLogBean;
-import com.yangjianzhou.baobaotao.bean.UserBean;
+import com.yangjianzhou.baobaotao.entity.LoginLog;
+import com.yangjianzhou.baobaotao.entity.User;
 import com.yangjianzhou.baobaotao.dao.LoginLogDao;
 import com.yangjianzhou.baobaotao.dao.UserDao;
 import com.yangjianzhou.baobaotao.utils.IDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 public class UserService {
@@ -24,13 +22,13 @@ public class UserService {
 		return matchCount > 0;
 	}
 
-	public UserBean findUserByUserName(String userName) {
+	public User findUserByUserName(String userName) {
 		return userDao.findUserByUserName(userName);
 	}
 
-	public void loginSuccess(UserBean user) {
+	public void loginSuccess(User user) {
 		user.setCredits(5 + user.getCredits());
-		LoginLogBean loginLog = new LoginLogBean();
+		LoginLog loginLog = new LoginLog();
 		loginLog.setUserId(user.getUserId());
 		loginLog.setIp(user.getLastIp());
 		loginLog.setLoginDate(user.getLastVisit());
