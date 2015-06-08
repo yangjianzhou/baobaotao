@@ -17,7 +17,7 @@ import java.util.Date;
 public class LoginController {
 
 	@Autowired
-	private UserService userService;
+	private UserService userService
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String loginPage() {
