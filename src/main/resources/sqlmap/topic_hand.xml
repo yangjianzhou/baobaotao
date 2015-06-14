@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="topic_hand">
+    <resultMap id="getByBoardIdMap" class="com.yangjianzhou.baobaotao.entity.Topic">
+        <result property="topicId" javaType="String" column="topic_id" jdbcType="String"/>
+        <result property="boardId" javaType="String" column="board_id" jdbcType="String"/>
+        <result property="topicTitle" javaType="String" column="topic_title" jdbcType="String"/>
+        <result property="userId" javaType="String" column="user_id" jdbcType="String"/>
+        <result property="topicType" javaType="com.yangjianzhou.baobaotao.enums.TopicType" column="topic_type" jdbcType="String"/>
+        <result property="createTime" javaType="java.util.Date" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="lastPostTime" javaType="java.util.Date" column="last_post_time" jdbcType="TIMESTAMP"/>
+        <result property="topsViews" javaType="Integer" column="topic_views" jdbcType="int"/>
+        <result property="topicReplies" javaType="Integer" column="topic_replies" jdbcType="int"/>
+    </resultMap>
+    <select id="getEliteByBoardId" resultMap="getByBoardIdMap" parameterClass="String">
+         SELECT * FROM tbl_topic
+         WHERE board_id = #boardId# AND topic_type = 'ELITE' ORDER BY last_post_time desc
+    </select>
+    <select id="getByBoardId" resultMap="getByBoardIdMap" parameterClass="String">
+        SELECT * FROM tbl_topic
+        WHERE board_id = #boardId#  ORDER BY last_post_time desc
+    </select>
+    <select id="getByTitle" resultMap="getByBoardIdMap" parameterClass="String">
+        SELECT * FROM tbl_topic
+        WHERE topic_title LIKE *#boardId#*  ORDER BY last_post_time desc
+    </select>
+</sqlMap>

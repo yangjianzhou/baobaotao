@@ -3,8 +3,8 @@ apply  plugin : "idea"
 
 idea{
     module{
-        downloadSources = false
-        downloadJavadoc = false
+        downloadSources = true
+        downloadJavadoc = true
     }
 
 }
@@ -15,17 +15,23 @@ repositories{
 }
 
 dependencies{
-    compile 'org.springframework:spring-context:3.2.13.RELEASE'
-    compile 'org.springframework:spring-webmvc:3.2.13.RELEASE'
-    compile 'org.springframework:spring-jdbc:3.2.13.RELEASE'
+    compile 'org.springframework:spring-context:3.0.5.RELEASE'
+    compile 'org.springframework:spring-webmvc:3.0.5.RELEASE'
+    compile 'org.springframework:spring-jdbc:3.0.5.RELEASE'
     compile 'javax.servlet:javax.servlet-api:3.1.0'
     compile 'javax.servlet:jstl:1.2'
-    compile 'org.springframework:spring-test:3.2.13.RELEASE'
-    compile 'org.springframework:spring-orm:3.2.13.RELEASE'
+    compile 'org.springframework:spring-test:3.0.5.RELEASE'
+    compile 'org.springframework:spring-orm:3.0.5.RELEASE'
     compile  'junit:junit:4.12'
     compile  'org.postgresql:postgresql:9.3-1103-jdbc3'
     //compile  'org.apache.commons:commons-dbcp2:2.1'
     compile 'commons-dbcp:commons-dbcp:1.4'
     compile  'org.aspectj:aspectjweaver:1.8.5'
+    compile 'org.apache.ibatis:ibatis-sqlmap:2.3.4.726'
+   // compile  'com.ibatis:ibatis2-common:2.1.7.597'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile  'cglib:cglib:2.2.2'
+    compile 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.1'
+
 
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="user_hand">
+    <select id="countUserByUserNameAndPassword" resultClass="Integer">
+        SELECT COUNT(*) FROM tbl_user
+        <dynamic prepend="WHERE">
+            <isNotNull prepend="and" property="username">
+                user_name = #username#
+            </isNotNull>
+            <isNotNull prepend="and" property="password">
+                password = #password#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <resultMap id="resultUserMap" class="com.yangjianzhou.baobaotao.entity.User">
+        <result property="userId" javaType="java.lang.String" column="user_id" jdbcType="String"/>
+        <result property="userName" javaType="java.lang.String" column="user_name" jdbcType="String"/>
+        <result property="password" javaType="java.lang.String" column="password" jdbcType="String"/>
+        <result property="credits" javaType="java.lang.Integer" column="credits" jdbcType="int"/>
+        <result property="lastIp" javaType="java.lang.String" column="last_ip" jdbcType="String"/>
+        <result property="lastVisit" javaType="java.util.Date" column="last_visit" jdbcType="TIMESTAMP"/>
+        <result property="locked" javaType="java.lang.Boolean" column="locked" jdbcType="boolean"/>
+        <result property="userType" javaType="com.yangjianzhou.baobaotao.enums.UserType" column="user_type"
+                jdbcType="String"/>
+    </resultMap>
+    <select id="queryByUserName" resultMap="resultUserMap" parameterClass="java.lang.String">
+        SELECT * FROM tbl_user
+        <!--        <dynamic prepend="WHERE">
+                    <isNotNull prepend="AND" property="username">
+                        user_name = #username#
+                    </isNotNull>
+                </dynamic>-->
+        WHERE user_name = #username#
+    </select>
+    <update id="updateUserInfo" parameterClass="com.yangjianzhou.baobaotao.entity.User">
+        UPDATE tbl_user
+        <dynamic prepend="SET">
+            <isNotNull property="lastVisit" prepend=",">
+                last_visit = #lastVisit#
+            </isNotNull>
+            <isNotNull property="lastIp" prepend=",">
+                last_ip = #lastIp#
+            </isNotNull>
+            <isNotNull property="credits" prepend=",">
+                credits = #credits#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="WHERE">
+            <isNotNull prepend="AND" property="userId">
+                user_id = #userId#
+            </isNotNull>
+        </dynamic>
+    </update>
+
+</sqlMap>
