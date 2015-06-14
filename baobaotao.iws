@@ -72,8 +72,8 @@
       <file leaf-file-name="pageBar.tag" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/pageBar.tag">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46753246">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36734694">
+              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -955,12 +955,12 @@
       <workItem from="1434195580982" duration="4901000" />
       <workItem from="1434246187975" duration="608000" />
       <workItem from="1434247640514" duration="13323000" />
-      <workItem from="1434293572198" duration="985000" />
+      <workItem from="1434293572198" duration="1586000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59826000" />
+    <option name="totallyTimeSpent" value="60427000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -1411,8 +1411,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/pageBar.tag">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46753246">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.36734694">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
